@@ -13,8 +13,6 @@ In this project, I set up a JavaScript for the Leaderboard list app, using webpa
 - Removing a task
 - Storing data in the local storage
 
-
-
 ## Live Demo
 - [Live Demo Link](https://olipliche.github.io/Leaderboard/dist/)
 
@@ -34,7 +32,6 @@ To get a local copy of this project, follow these simple steps
   "extends": "stylelint-config-standard"
 }
 - npx stylelint "**/*.css"
-
 
 ### Prerequisites
 - Text editor

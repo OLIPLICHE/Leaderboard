@@ -50,7 +50,7 @@ button:hover {
   margin: 0 auto;
 }
 
-.table {
+#table {
   margin: 40px 0;
   padding: 0;
   list-style: none;
@@ -59,12 +59,12 @@ button:hover {
   font-weight: bold;
 }
 
-.table li {
+#table li {
   text-align: start;
   padding: 8px 10px;
 }
 
-.table li:nth-child(even) {
+#table li:nth-child(even) {
   background-color: rgb(231, 227, 227);
 }
 
@@ -87,6 +87,15 @@ input {
   color: black;
   border: solid 4px black;
   font-size: 17px;
+}
+
+#error-msg {
+  color: rgb(228, 28, 28);
+  font-size: 14px;
+  font-weight: 500;
+  font-style: italic;
+  transition: all ease-in-out;
+  display: none;
 }
 
 #form-section button {

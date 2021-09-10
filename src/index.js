@@ -1,38 +1,22 @@
-/* eslint-disable semi */
+/* eslint-disable import/extensions */
 import './style.css';
-import { createNewGame, getGames, submitScore } from './newGame';
+import postScores from './api.js';
+import getScores from './getScores.js';
+import showScores from './newGame.js';
+import showError from './localserver.js';
 
-const output = (scores) => {
-  const scoresList = document.querySelector('.scores-list');
-  scoresList.innerHTML = '';
-  scores.forEach(({ user, score }) => {
-    const li = document.createElement('li');
-    li.classList.add('score');
-    li.innerHTML = `<span>${user}:</span> <span>${score}</span>`;
-    scoresList.appendChild(li);
-  });
-};
+const refresh = document.getElementById('refresh');
+const form = document.getElementById('form');
+const gameApi = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/GDUN7EKtNyCRpmru02cT/scores';
 
-const myForm = document.getElementById('form');
-const inputForm = myForm.querySelectorAll('input');
-const refreshBtn = document.querySelector('.refresh');
-const gameName = 'paka';
-window.addEventListener('load', async () => {
-  const result = await createNewGame(gameName);
-  const id = result.split(' ')[3];
-  myForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const user = inputForm[0].value;
-    const score = inputForm[1].value;
-    const data = {
-      user,
-      score,
-    };
-    await submitScore(data, id);
-    myForm.reset();
-  });
-  refreshBtn.addEventListener('click', async () => {
-    const res = await getGames(id);
-    output(res);
-  });
+refresh.addEventListener('click', () => {
+  getScores(gameApi).then((data) => showScores(data.result));
 });
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  showError();
+  postScores(gameApi);
+});
+
+window.onload = getScores(gameApi).then((data) => showScores(data.result));

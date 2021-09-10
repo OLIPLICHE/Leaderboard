@@ -1,18 +1,11 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable semi */
-import * as Api from './api';
-// Create a New game by using API
-export const createNewGame = async (name) => {
-  const { result } = await Api.post('games/', JSON.stringify({ name }));
-  return result;
+const showScores = (scores) => {
+  const scoresContainer = document.getElementById('table');
+  scoresContainer.innerHTML = '';
+  scores.forEach((score) => {
+    const scoreList = `<li class="name-scores">${score.user}: ${score.score}</li>`;
+
+    scoresContainer.innerHTML += scoreList;
+  });
 };
 
-export const getGames = async (id) => {
-  const { result } = await Api.get(`games/${id}/scores/`);
-  return result;
-};
-
-export const submitScore = async (data, id) => {
-  const { result } = await Api.post(`games/${id}/scores/`, JSON.stringify(data));
-  return result;
-};
+export default showScores;

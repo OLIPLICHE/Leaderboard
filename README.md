@@ -16,7 +16,7 @@ In this project, I set up a JavaScript for the Leaderboard list app, using webpa
 - Storing data in the local storage
 
 ## Live Demo
-- [Live Demo Link](https:///olipliche.github.io/Leaderboard/)
+- [Live Demo Link](https://olipliche.github.io/Leaderboard/dist/)
 
 ## Getting started
 To get a local copy of this project, follow these simple steps
